@@ -1,0 +1,36 @@
+﻿<div component="NavMenu">
+    <div class="top-row pl-4 navbar fixed-top navbar-dark">
+        <a class="navbar-brand" href="">Snap Notes</a>
+        <div>
+            <NavLink class="navbar-button nav-link" href="add" Match=NavLinkMatch.All>
+                <span class="oi oi-plus"></span>
+            </NavLink>
+            <NavLink class="navbar-button nav-link" href="" Match=NavLinkMatch.All>
+                <span class="oi oi-list"></span>
+            </NavLink>
+        </div>
+    </div>
+
+    <div class=@(collapseNavMenu ? "collapse" : null) onclick=@ToggleNavMenu>
+        <ul class="nav flex-column">
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="index.html" Match=NavLinkMatch.All>
+                    <span class="oi oi-list"></span> View Notes
+                </NavLink>
+            </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="add">
+                    <span class="oi oi-plus"></span> Add Note
+                </NavLink>
+            </li>
+        </ul>
+    </div>
+</div>
+
+@functions {
+    bool collapseNavMenu = true;
+
+    void ToggleNavMenu() {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

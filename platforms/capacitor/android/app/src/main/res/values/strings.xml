@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Snap Notes</string>
+    <string name="title_activity_main">Snap Notes</string>
+    <string name="package_name">org.bionic.snapnotes</string>
+    <string name="fileprovider_authority">org.bionic.snapnotes.fileprovider</string>
+    <string name="custom_url_scheme">org.bionic.snapnotes</string>
+</resources>

@@ -1,0 +1,26 @@
+div[component="AddCard"] .card {
+  padding: 20px; }
+  div[component="AddCard"] .card img {
+    max-width: 100%;
+    height: auto; }
+  div[component="AddCard"] .card i.oi-flag {
+    margin-right: 10px; }
+  div[component="AddCard"] .card .card-header {
+    margin-bottom: 15px; }
+
+div[component="NoteCard"] {
+  min-width: 250px; }
+  div[component="NoteCard"] img {
+    max-width: 100%;
+    height: auto;
+    padding: 10px; }
+  div[component="NoteCard"] i.oi-location {
+    margin-right: 10px; }
+  div[component="NoteCard"] .card-image {
+    padding-left: 10px;
+    padding-right: 10px; }
+  div[component="NoteCard"] .card-body {
+    padding-top: 10px;
+    width: 100%; }
+
+/*# sourceMappingURL=App.css.map */

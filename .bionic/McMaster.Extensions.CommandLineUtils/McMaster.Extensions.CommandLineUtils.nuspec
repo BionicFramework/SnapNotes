@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>McMaster.Extensions.CommandLineUtils</id>
+    <version>2.2.5</version>
+    <authors>Nate McMaster</authors>
+    <owners>Nate McMaster</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <projectUrl>https://github.com/natemcmaster/CommandLineUtils</projectUrl>
+    <iconUrl>https://natemcmaster.github.io/CommandLineUtils/logo.png</iconUrl>
+    <description>Command-line parsing API. A community-maintained fork of Microsoft.Extensions.CommandLineUtils, plus extras.
+Commonly used types:
+
+McMaster.Extensions.CommandLineUtils.CommandLineApplication
+McMaster.Extensions.CommandLineUtils.CommandOption
+McMaster.Extensions.CommandLineUtils.IConsole
+McMaster.Extensions.CommandLineUtils.ArgumentEscaper</description>
+    <releaseNotes>Bug fixes:
+
+* @bording and @SeanFeldman: Unable to create new instance of `CommandOption&lt;T&gt;` for type that is already registered
+
+Minor improvements:
+
+ * Started code signing the NuGet package and binaries
+ * [@jerriep]: added documentation for response file parsing
+
+See more details here: https://github.com/natemcmaster/CommandLineUtils/blob/master/CHANGELOG.md#v225</releaseNotes>
+    <copyright>Copyright © Nate McMaster</copyright>
+    <tags>commandline parsing</tags>
+    <repository type="git" url="https://github.com/natemcmaster/CommandLineUtils.git" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="System.ValueTuple" version="4.4.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard1.6">
+        <dependency id="System.ComponentModel.Annotations" version="4.1.0" exclude="Build,Analyzers" />
+        <dependency id="System.Diagnostics.Process" version="4.1.0" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Thread" version="4.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.ValueTuple" version="4.4.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="System.ComponentModel.Annotations" version="4.4.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.ComponentModel.DataAnnotations" targetFramework=".NETFramework4.5" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

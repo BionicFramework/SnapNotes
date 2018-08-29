@@ -1,0 +1,56 @@
+div[component="NavMenu"] {
+  .nav-item {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .nav-item:first-of-type {
+    padding-top: 1rem;
+  }
+
+  .nav-item:last-of-type {
+    padding-bottom: 1rem;
+  }
+
+  .nav-item a {
+    color: #d7d7d7;
+    border-radius: 4px;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    line-height: 3rem;
+  }
+
+  .nav-item a.active {
+    background-color: rgba(255, 255, 255, 0.25);
+    color: white;
+  }
+
+  .nav-item a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+
+  .navbar-toggler {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .navbar-button {
+    color: rgba(255, 255, 255, 1);
+    float: right;
+  }
+
+  .navbar-button.active {
+    color: rgb(63, 63, 63);
+  }
+
+  @media (min-width: 768px) {
+    .navbar-toggler {
+      display: none;
+    }
+
+    .navbar-button {
+      display: none;
+    }
+  }
+}

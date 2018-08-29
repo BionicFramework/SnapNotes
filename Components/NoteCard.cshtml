@@ -1,0 +1,70 @@
+@inject IDevice Device;
+
+<div component="NoteCard" class="card align-items-center">
+
+    @if (Note.picture != null) {
+        <div class="card-image">
+            <img class="card-img-top" src=@Note.picture alt="Note Image">
+        </div>
+    }
+    <div class="card-body">
+        <h5 class="card-title">@Note.subject</h5>
+        <p class="card-text">@Note.description</p>
+        <p class="card-text">
+            <div class="row">
+                @if (Note.location != null) {
+                    <div class="col-8">
+                        <button onclick=@OpenLocation
+                                type="button"
+                                class="btn btn-outline-dark">
+                            <i class="oi oi-location"></i>Location
+                        </button>
+                    </div>
+                }
+                <div class=@(Note.location == null ? "col-12" : "col-4")>
+                    <button onclick=@RemoveNote
+                            type="button"
+                            class="btn btn-danger float-right">
+                        <i class="oi oi-circle-x"></i>
+                    </button>
+                </div>
+            </div>
+        </p>
+    </div>
+
+</div>
+
+@functions {
+
+    [Parameter]
+    private Action<SnapNote> OnRemove { get; set; }
+
+    [Parameter]
+    private SnapNote Note { get; set; }
+
+    private void OpenLocation() {
+        try {
+            var coords = Note.location.coords;
+            Device.OpenInBrowser(
+                url: $"https://www.google.com/maps/@@{coords.latitude},{coords.longitude}z",
+                windowName: "Bionic Browser",
+                toolbarColor: "#f64b4b");
+        }
+        catch (Exception e) {
+            Console.WriteLine(e.Message);
+        }
+    }
+
+    private async void RemoveNote() {
+        var result = await Device.OpenConfirmModal(
+            title: "Remove SnapNote",
+            message: "Are you sure you want to remove note?",
+            okLabel: "Yes",
+            cancelLabel: "No");
+
+        if (result) {
+            OnRemove?.Invoke(Note);
+        }
+    }
+
+}

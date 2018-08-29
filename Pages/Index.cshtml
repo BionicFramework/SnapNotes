@@ -1,0 +1,56 @@
+﻿@page "/"
+@page "/index.html"
+@using Bionic.Bridge.Capacitor
+@using Microsoft.AspNetCore.Blazor.Services;
+@inject IUriHelper UriHelper;
+@inject IStorage Storage;
+@inject IPlatform Platform;
+
+<div page="Index">
+
+    <div class="card-deck">
+        <div class='container-fluid'>
+            <div class="row">
+                @foreach (var note in Store.notes) {
+                    <div class="col-sm-6 col-md-6 col-lg-4">
+                        <NoteCard note=@note OnRemove=@(async n => await RemoveNote(n))/>
+                    </div>
+                }
+            </div>
+            </div>
+    </div>
+
+</div>
+
+@functions {
+    private SnapNoteStore Store { get; set; } = new SnapNoteStore();
+
+    protected override async Task OnInitAsync() {
+        DeviceInfo info = await Platform.Info();
+        Console.WriteLine(info.platform);
+        
+        try {
+            Store = await Storage.Get<SnapNoteStore>("snapnotes") ?? Store;
+            if (Store.notes.Length == 0) {
+                UriHelper.NavigateTo("add");
+            }
+        }
+        catch (Exception e) {
+            Console.WriteLine(e.Message);
+        }
+    }
+
+    private async Task RemoveNote(SnapNote note) {
+        try {
+            var list = new List<SnapNote>(Store.notes);
+            list.Remove(note);
+            Store.notes = list.ToArray();
+            await Storage.Set("snapnotes", Store);
+            StateHasChanged();
+        }
+        catch (Exception e) {
+            Console.WriteLine(e.Message);
+        }
+    }
+
+}

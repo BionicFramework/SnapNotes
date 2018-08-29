@@ -1,0 +1,25 @@
+{
+  "name": "Snap Notes",
+  "short_name": "Snap Notes",
+  "start_url": "index.html",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "images/logo-full-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/logo-full.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "images/logo-full-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "background_color": "#f64b4b",
+  "theme_color": "#f64b4b"
+}

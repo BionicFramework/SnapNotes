@@ -1,0 +1,6 @@
+{
+  "appId": "org.bionic.snapnotes",
+  "appName": "Snap Notes",
+  "bundledWebRuntime": true,
+  "webDir": "www"
+}

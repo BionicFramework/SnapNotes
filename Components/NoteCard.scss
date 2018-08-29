@@ -1,0 +1,27 @@
+div[component="NoteCard"] {
+  min-width: 250px;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+
+  i.oi-location {
+    margin-right: 10px;
+  }
+
+  .card-image {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .card-body {
+    padding-top: 10px;
+    width: 100%;
+  }
+
+  @media (min-width: 576px) {
+    margin-bottom: 20px !important;
+  }
+}

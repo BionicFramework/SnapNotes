@@ -1,0 +1,149 @@
+@import url(./bootstrap/bootstrap.min.css);
+@import url(./open-iconic/font/css/open-iconic-bootstrap.min.css);
+div[component="NavMenu"] .nav-item {
+  font-size: 0.9rem;
+  padding-bottom: 0.5rem; }
+div[component="NavMenu"] .nav-item:first-of-type {
+  padding-top: 1rem; }
+div[component="NavMenu"] .nav-item:last-of-type {
+  padding-bottom: 1rem; }
+div[component="NavMenu"] .nav-item a {
+  color: #d7d7d7;
+  border-radius: 4px;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  line-height: 3rem; }
+div[component="NavMenu"] .nav-item a.active {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: white; }
+div[component="NavMenu"] .nav-item a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white; }
+div[component="NavMenu"] .navbar-toggler {
+  background-color: rgba(255, 255, 255, 0.1); }
+div[component="NavMenu"] .navbar-button {
+  color: white;
+  float: right; }
+div[component="NavMenu"] .navbar-button.active {
+  color: #3f3f3f; }
+@media (min-width: 768px) {
+  div[component="NavMenu"] .navbar-toggler {
+    display: none; }
+  div[component="NavMenu"] .navbar-button {
+    display: none; } }
+
+div[component="AddCard"] .card {
+  padding: 20px; }
+  div[component="AddCard"] .card img {
+    max-width: 100%;
+    height: auto; }
+  div[component="AddCard"] .card i.oi-flag {
+    margin-right: 10px; }
+  div[component="AddCard"] .card .card-header {
+    margin-bottom: 15px; }
+@media (max-width: 767.98px) {
+  div[component="AddCard"] {
+    max-width: 400px;
+    margin: auto; } }
+
+div[component="NoteCard"] {
+  min-width: 250px; }
+  div[component="NoteCard"] img {
+    max-width: 100%;
+    height: auto;
+    padding: 10px; }
+  div[component="NoteCard"] i.oi-location {
+    margin-right: 10px; }
+  div[component="NoteCard"] .card-image {
+    padding-left: 10px;
+    padding-right: 10px; }
+  div[component="NoteCard"] .card-body {
+    padding-top: 10px;
+    width: 100%; }
+  @media (min-width: 576px) {
+    div[component="NoteCard"] {
+      margin-bottom: 20px !important; } }
+
+.main {
+  flex: 1;
+  margin-top: 40px; }
+
+.sidebar {
+  background-color: #f64b4b; }
+
+.sidebar .top-row {
+  background-color: #f64b4b; }
+
+.sidebar .navbar-brand {
+  font-size: 1.1rem; }
+
+.sidebar .oi {
+  width: 2rem;
+  font-size: 1.1rem;
+  vertical-align: text-top;
+  top: -2px; }
+
+.content {
+  padding-top: 1.1rem; }
+
+@media (min-width: 768px) {
+  .main > div {
+    padding-left: 2rem !important;
+    padding-right: 1.5rem !important; }
+
+  .sidebar {
+    width: 250px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    margin-top: 50px; }
+
+  .sidebar .collapse {
+    /* Never collapse the sidebar for wide screens */
+    display: block; } }
+html, body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #f64b4b; }
+
+app {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  height: 100%; }
+
+.center-logo {
+  background: url("../images/logo-full.png") no-repeat center center;
+  height: 600px;
+  width: 100%; }
+
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0);
+    transform-style: preserve-3d; }
+  40%, 43% {
+    transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -30px, 0);
+    transform-style: preserve-3d; }
+  70% {
+    transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -15px, 0);
+    transform-style: preserve-3d; }
+  90% {
+    transform: translate3d(0, -4px, 0);
+    transform-style: preserve-3d; } }
+.bump {
+  animation: bounce 1.5s infinite;
+  transform-origin: center bottom; }
+
+ion-modal.modal {
+  position: absolute;
+  display: block; }
+
+@media (min-width: 768px) {
+  app {
+    flex-direction: row; } }
+
+/*# sourceMappingURL=App.css.map */

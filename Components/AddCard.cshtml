@@ -1,0 +1,107 @@
+@using Bionic.Bridge.Capacitor;
+@using Microsoft.AspNetCore.Blazor.Services;
+@inject IUriHelper UriHelper;
+@inject IStorage Storage;
+@inject IDevice Device;
+
+<div component="AddCard">
+    <div class="card">
+        <div class="row">
+            <div class="col-sm-12 order-1 col-md-8 order-md-0">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="noteSubject" placeholder="What is this note about?" bind=@Note.subject/>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" id="noteDescription" rows="3" placeholder="Write details here." bind=@Note.description></textarea>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <button
+                            onclick=@TakePicture
+                            type="button"
+                            class="btn btn-outline-dark"
+                            aria-pressed="false"
+                            autocomplete="off">
+                            <i class="oi oi-camera-slr"></i>
+                        </button>
+                    </div>
+                    <div class="col-4 text-center">
+                        <button
+                            onclick=@SaveLocation
+                            type="button"
+                            class="btn btn-outline-dark"
+                            aria-pressed="false"
+                            autocomplete="off">
+                            <i class="oi oi-map-marker"></i>
+                        </button>
+                    </div>
+                    <div class="col-4">
+                        <button
+                            onclick=@AddNote
+                            type="button"
+                            class="btn btn-success float-right">
+                            <i class="oi oi-circle-check"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 order-0 col-md-4 order-md-1 card-header">
+                <img class="card-img-top" src=@(Note.picture == null ? "images/logo-full.png" : Note.picture) alt="Card image cap"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+@functions {
+    private SnapNote Note { get; } = new SnapNote();
+
+    private async Task TakePicture() {
+        var options = new CameraOptions {
+            quality = 90,
+            allowEditing = true,
+            resultType = CameraResultType.Uri
+        };
+        try {
+            var image = await Device.TakePicture(options);
+            Note.picture = image.webPath;
+        }
+        catch (Exception e) {
+            Console.WriteLine(e.Message);
+        }
+    }
+
+    private async Task SaveLocation() {
+        try {
+            Note.location = await GeolocationBridge.GetCurrentPosition(); //await Device.CurrentLocation();
+            Console.WriteLine(Note.location.coords);
+            if (Note.location != null && Note.location.coords != null) {
+                await Device.ToastShort("🗺 Current Location Saved");
+            }
+            else {
+                Note.location = null;
+                await Device.ToastShort("☠ Failed to save location");
+            }
+        }
+        catch (Exception e) {
+            Console.WriteLine(e.Message);
+        }
+    }
+
+    private async Task AddNote() {
+        try {
+            var store = await Storage.Get<SnapNoteStore>("snapnotes") ?? new SnapNoteStore();
+
+            var notes = new List<SnapNote>(store.notes);
+            notes.Add(Note);
+            store.notes = notes.ToArray();
+            await Storage.Set("snapnotes", store);
+
+            await Device.ToastShort("SnapNote Added 💙");
+            UriHelper.NavigateTo("index.html");
+        }
+        catch
+            (Exception e) {
+            Console.WriteLine(e.Message);
+        }
+    }
+}
