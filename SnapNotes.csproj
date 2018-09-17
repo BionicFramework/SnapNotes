@@ -5,10 +5,11 @@
         <RunCommand>dotnet</RunCommand>
         <RunArguments>blazor serve</RunArguments>
         <LangVersion>7.3</LangVersion>
+        <IncludeSymbols>true</IncludeSymbols>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="BionicBridgeCapacitor" Version="0.0.4" />
+        <PackageReference Include="BionicBridgeCapacitor" Version="0.0.6" />
         <PackageReference Include="BionicExtensions" Version="0.0.1" />
         <PackageReference Include="Microsoft.AspNetCore.Blazor.Browser" Version="0.5.1" />
         <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="0.5.1" />
@@ -16,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Watch Include="**/*.cshtml;**/*.scss" Visible="true" />
+        <Watch Include="**/*.cshtml;**/*.scss" Visible="false" />
         <Watch Remove="platforms\**" />
     </ItemGroup>
 
@@ -44,6 +45,6 @@
 
     <Target Name="CompileSCSS" BeforeTargets="Build" Condition="Exists('App.scss')">
         <Message Importance="high" Text="Compiling SCSS" />
-        <Exec Command="scss --no-cache --update ./App.scss:./wwwroot/css/App.css" />
+        <Exec Command="sass --update ./App.scss:./wwwroot/css/App.css" />
     </Target>
 </Project>

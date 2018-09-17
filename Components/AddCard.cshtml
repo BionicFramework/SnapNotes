@@ -3,6 +3,7 @@
 @inject IUriHelper UriHelper;
 @inject IStorage Storage;
 @inject IDevice Device;
+@inject IPlatform Platform;
 
 <div component="AddCard">
     <div class="card">
@@ -46,19 +47,33 @@
                 </div>
             </div>
             <div class="col-sm-12 order-0 col-md-4 order-md-1 card-header">
-                <img class="card-img-top" src=@(Note.picture == null ? "images/logo-full.png" : Note.picture) alt="Card image cap"/>
+                <img class="card-img-top @(IsAndroidPWA && Note.picture != null ? "rotate-90" : "")" src=@(Note.picture == null ? "images/logo-full.png" : Note.picture) alt="Card image cap"/>
             </div>
         </div>
     </div>
 </div>
 
+@* @if (IsAndroidPWA) { *@
+@*     <style> *@
+@*         body /deep/ .accept-image { *@
+@*           transform: rotate(90deg); *@
+@*         } *@
+@*     </style> *@
+@* } *@
+
 @functions {
+    private bool IsAndroidPWA { get; set; }
+
     private SnapNote Note { get; } = new SnapNote();
 
+    protected override async Task OnInitAsync() {
+        IsAndroidPWA = await Platform.IsAndroidPWA();
+    }
     private async Task TakePicture() {
         var options = new CameraOptions {
             quality = 90,
-            allowEditing = true,
+            allowEditing = false,
+            correctOrientation = true,
             resultType = CameraResultType.Uri
         };
         try {

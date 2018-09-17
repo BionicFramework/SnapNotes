@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Bionic.Bridge.Capacitor;
 
@@ -10,8 +11,20 @@ public interface IDevice {
 
   Task ToastLong(string message);
 
-  void OpenInBrowser(string url, string windowName = null, string toolbarColor = null, bool fullscreen = true);
+  void OpenInBrowser(
+    string url,
+    string windowName = null,
+    string toolbarColor = null,
+    bool fullscreen = true);
 
-  Task<bool> OpenConfirmModal(string message, string title = "Please confirm", string okLabel = "OK",
+  Task<bool> OpenConfirmModal(
+    string message, string title = "Please confirm",
+    string okLabel = "OK",
     string cancelLabel = "Cancel");
+
+  Task StartMotionOrientationListener(
+    Action<MotionOrientationEventResult> motionOrientationListener,
+    string actionId = "DEFAULT");
+
+  Task StopMotionOrientationListener(string actionId = "DEFAULT");
 }

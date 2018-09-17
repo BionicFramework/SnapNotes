@@ -14,11 +14,19 @@ div[component="NoteCard"] {
   .card-image {
     padding-left: 10px;
     padding-right: 10px;
+    overflow: hidden;
+    margin-top: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
   }
 
   .card-body {
     padding-top: 10px;
     width: 100%;
+  }
+
+  .rotate-90 {
+    transform: rotate(90deg) scale(1.5, 1.5);
   }
 
   @media (min-width: 576px) {

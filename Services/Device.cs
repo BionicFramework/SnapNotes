@@ -50,4 +50,23 @@ public class Device : IDevice {
 
     return await Task.FromResult(false);
   }
+
+  public async Task StartMotionOrientationListener(
+    Action<MotionOrientationEventResult> motionOrientationListener, string actionId = "DEFAULT") {
+    try {
+      await MotionBridge.AddOrientationListener(actionId, motionOrientationListener);
+    }
+    catch (Exception e) {
+      Console.WriteLine($"Unable to start motion orientation listener {actionId}: {e.Message}");
+    }
+  }
+
+  public async Task StopMotionOrientationListener(string actionId = "DEFAULT") {
+    try {
+      await MotionBridge.RemoveListener(actionId);
+    }
+    catch (Exception e) {
+      Console.WriteLine($"Unable to stop motion orientation listener {actionId}: {e.Message}");
+    }
+  }
 }

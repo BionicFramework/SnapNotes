@@ -1,10 +1,11 @@
 @inject IDevice Device;
+@inject IPlatform Platform;
 
 <div component="NoteCard" class="card align-items-center">
 
     @if (Note.picture != null) {
         <div class="card-image">
-            <img class="card-img-top" src=@Note.picture alt="Note Image">
+            <img class="card-img-top @(IsAndroidPWA ? "rotate-90" : "")" src=@Note.picture alt="Note Image">
         </div>
     }
     <div class="card-body">
@@ -36,11 +37,17 @@
 
 @functions {
 
+    private bool IsAndroidPWA { get; set; }
+
     [Parameter]
     private Action<SnapNote> OnRemove { get; set; }
 
     [Parameter]
     private SnapNote Note { get; set; }
+
+    protected override async Task OnInitAsync() {
+        IsAndroidPWA = await Platform.IsAndroidPWA();
+    }
 
     private void OpenLocation() {
         try {

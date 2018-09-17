@@ -1,6 +1,6 @@
 {
   "name": "Snap Notes",
-  "short_name": "SN",
+  "short_name": "Snap Notes",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [
@@ -20,6 +20,6 @@
       "type": "image/png"
     }
   ],
-  "background_color": "#31d53d",
-  "theme_color": "#31d53d"
+  "background_color": "#f64b4b",
+  "theme_color": "#f64b4b"
 }

@@ -13,11 +13,20 @@ div[component="AddCard"] {
     
     .card-header {
       margin-bottom: 15px;
+      overflow: hidden;
     }
   }
 
+  .rotate-90 {
+    transform: rotate(90deg) scale(1.5, 1.5);
+  }
+  
   @media (max-width: 767.98px) {
     max-width: 400px;
     margin: auto;
+    .card-header {
+      margin-left: 15px;
+      margin-right: 15px;
+    }
   }
 }

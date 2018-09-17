@@ -1,8 +1,7 @@
 using System.Threading.Tasks;
 using Bionic.Bridge.Capacitor;
 
-public interface IPlatform
-{
+public interface IPlatform {
   Task<DeviceInfo> Info();
 
   Task<bool> IsWeb();
@@ -10,4 +9,6 @@ public interface IPlatform
   Task<bool> IsAndroid();
 
   Task<bool> IsiOS();
+
+  Task<bool> IsAndroidPWA();
 }
