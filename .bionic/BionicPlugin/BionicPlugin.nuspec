@@ -2,21 +2,19 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>BionicPlugin</id>
-    <version>0.0.1</version>
-    <authors>BionicPlugin</authors>
-    <owners>BionicPlugin</owners>
+    <version>1.0.20</version>
+    <authors>Bionic Framework Contributors</authors>
+    <owners>Bionic Framework Contributors</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://raw.githubusercontent.com/BionicFramework/BionicCLI/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/BionicFramework/BionicCLI</projectUrl>
+    <iconUrl>https://vectr.com/bmsantos/a2sGndBV8e.svg?width=256&amp;height=256&amp;select=a2sGndBV8epage0</iconUrl>
     <description>Package Description</description>
+    <copyright>(c) Bionic Framework Contributors. All rights reserved.</copyright>
+    <tags>ASP.NET Core, Blazor, Bionic, Ionic, Android, iOS, PWA, Electron</tags>
+    <repository type="git" url="https://github.com/BionicFramework/BionicCLI" />
     <dependencies>
-      <group targetFramework=".NETStandard1.6">
-        <dependency id="McMaster.Extensions.CommandLineUtils" version="2.2.5" exclude="Build,Analyzers" />
-        <dependency id="NETStandard.Library" version="1.6.1" exclude="Build,Analyzers" />
-      </group>
-      <group targetFramework=".NETStandard1.7">
-        <dependency id="McMaster.Extensions.CommandLineUtils" version="2.2.5" exclude="Build,Analyzers" />
-        <dependency id="NETStandard.Library" version="1.6.1" exclude="Build,Analyzers" />
-      </group>
-      <group targetFramework=".NETStandard2.0">
+      <group targetFramework=".NETCoreApp2.1">
         <dependency id="McMaster.Extensions.CommandLineUtils" version="2.2.5" exclude="Build,Analyzers" />
       </group>
     </dependencies>

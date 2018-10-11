@@ -2,18 +2,18 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <RunCommand>dotnet</RunCommand>
-        <RunArguments>blazor serve</RunArguments>
-        <LangVersion>7.3</LangVersion>
+        <RunCommand>echo</RunCommand>
+        <RunArguments>Reloading...</RunArguments>
+        <LangVersion>latest</LangVersion>
         <IncludeSymbols>true</IncludeSymbols>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="BionicBridgeCapacitor" Version="0.0.6" />
         <PackageReference Include="BionicExtensions" Version="0.0.1" />
-        <PackageReference Include="Microsoft.AspNetCore.Blazor.Browser" Version="0.5.1" />
-        <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="0.5.1" />
-        <DotNetCliToolReference Include="Microsoft.AspNetCore.Blazor.Cli" Version="0.5.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Blazor.Browser" Version="0.6.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="0.6.0" />
+        <DotNetCliToolReference Include="Microsoft.AspNetCore.Blazor.Cli" Version="0.6.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -44,7 +44,17 @@
     </ItemGroup>
 
     <Target Name="CompileSCSS" BeforeTargets="Build" Condition="Exists('App.scss')">
-        <Message Importance="high" Text="Compiling SCSS" />
-        <Exec Command="sass --update ./App.scss:./wwwroot/css/App.css" />
+      <Message Importance="high" Text="Compiling SCSS" />
+      <Exec Command="sass --update ./App.scss:./wwwroot/css/App.css" />
     </Target>
+
+    <ItemGroup>
+        <WwwRootFiles Include="wwwroot/**/*.*" />
+    </ItemGroup>
+
+    <Target Name="CopyAssets" AfterTargets="Build">
+        <Message  Importance="high" Text="Copying...."/>
+        <Copy SourceFiles="@(WwwRootFiles)" DestinationFiles=".bionic/wwwroot/%(RecursiveDir)/%(Filename)%(Extension)" SkipUnchangedFiles="false" />
+    </Target>
+
 </Project>

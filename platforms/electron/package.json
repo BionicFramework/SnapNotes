@@ -1,5 +1,5 @@
 {
-  "name": "electron-quick-start",
+  "name": "BionicFrameworkElectronApp",
   "version": "1.0.0",
   "description": "A minimal Electron application",
   "main": "main.js",
@@ -17,6 +17,6 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^2.0.8"
+    "electron": "^3.0.2"
   }
 }

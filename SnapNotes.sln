@@ -13,5 +13,6 @@ Global
 		{451092A3-B7A9-4817-BCF4-C09844CFE1DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{451092A3-B7A9-4817-BCF4-C09844CFE1DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{451092A3-B7A9-4817-BCF4-C09844CFE1DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{451092A3-B7A9-4817-BCF4-C09844CFE1DC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal
